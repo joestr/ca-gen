@@ -4,8 +4,8 @@ touch ./root-ca/{root-ca.serial.txt,root-ca.index.txt,root-ca.crlserial.txt}
 openssl genrsa -out ./root-ca/root-ca.pem 1024
 openssl req -config ./openssl.conf -x509 -new -sha512 -nodes -extensions v3_ca -key ./root-ca/root-ca.pem -days 10950 -out ./root-ca/root-ca.crt
 
-openssl req -new -sha512 -key ./root-ca/root-ca.pem -out ./root-ca/root-ca.csr -subj "/C=US/ST=California/L=Las Quejas/O=YouTube Ministry of Pendatry/OU=Trust Provider/CN=YouTube MoP Trust Provider"
-openssl ca -config ./openssl.conf -rand_serial -batch -notext -in ./root-ca/root-ca.csr -out ./root-ca/root-ca.crt -selfsign -extensions v3_ca -days 10950 
+openssl req -new -sha512 -key ./root-ca/root-ca.pem -out ./root-ca/root-ca.csr -subj "/C=US/ST=California/L=Las Quejas/O=YouTube Ministry of Pendatry/OU=Trust Provider/CN=YouTube MoP Trust Provider/emailAddress=moptrust@youtube.PLACEHOLDER.com"
+openssl ca -config ./openssl.conf -name root-ca -rand_serial -batch -notext -in ./root-ca/root-ca.csr -out ./root-ca/root-ca.crt -selfsign -extensions v3_ca -days 10950 
 
 
 # Root CA - OCSP
